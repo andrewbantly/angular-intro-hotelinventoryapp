@@ -1,10 +1,12 @@
 <h2>Welcome to {{hotelName}}</h2>
-<!-- <div [hidden]="hideRooms">
+<div [hidden]="hideRooms">
 
     Number of rooms:
-    <div [innerText]="numberOfRooms"></div>
+    <div 
+    [ngStyle]="{'color': rooms.availableRooms ? 'green' : 'red'}"
+    [innerText]="numberOfRooms"></div>
 
-</div> -->
+</div>
 
 <!-- optional chaining  -->
 {{ rooms?.availableRooms ?? 'No Rooms'}}
@@ -16,8 +18,8 @@
     
     <table>
         <tr>
-            <th>Index</th>
-            <th>EvenOdd</th>
+            <!-- <th>Index</th> -->
+            <!-- <th>EvenOdd</th> -->
             <th>Room Number</th>
             <th>Room Type</th>
             <th>Room Price</th>
@@ -25,9 +27,12 @@
             <th>Checkin Time</th>
         </tr>
         <!-- *ngFor is like forEach loop -->
-        <tr *ngFor="let room of roomList; let e=even; let o=odd; let i = index">
-            <td>{{i}}</td>
-            <td>{{e ? "Even" : "Odd"}}</td>
+        <tr 
+            [ngClass]="e ? 'even' : 'odd'" 
+            *ngFor="let room of roomList; let e=even; let o=odd; let i = index"
+        >
+            <!-- <td>{{i}}</td> -->
+            <!-- <td>{{e ? "Even" : "Odd"}}</td> -->
             <td>{{ room.roomNumber }}</td>
             <td>{{ room.roomType }}</td>
             <td>{{ room.price }}</td>
