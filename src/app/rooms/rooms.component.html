@@ -25,19 +25,22 @@
             <th>Room Price</th>
             <th>Room Amenities</th>
             <th>Checkin Time</th>
+            <th>Rating</th>
         </tr>
         <!-- *ngFor is like forEach loop -->
         <tr 
             [ngClass]="e ? 'even' : 'odd'" 
-            *ngFor="let room of roomList; let e=even; let o=odd; let i = index"
+            *ngFor="let room of roomList | slice: 0:3; let e=even; let o=odd; let i = index"
         >
             <!-- <td>{{i}}</td> -->
             <!-- <td>{{e ? "Even" : "Odd"}}</td> -->
             <td>{{ room.roomNumber }}</td>
             <td>{{ room.roomType }}</td>
-            <td>{{ room.price }}</td>
-            <td>{{ room.amenities }}</td>
-            <td>{{ room.checkinTime }}</td>
+            <!-- PIPES transform strings, numbers, dates, etc for display  -->
+            <td>{{ room.price | currency : 'EUR'}}</td>
+            <td>{{ room.amenities | titlecase }}</td>
+            <td>{{ room.checkinTime | date : "short" }}</td>
+            <td>{{room.rating | number : "1.1-3" : "en-us"}}</td>
 
 
         </tr>
