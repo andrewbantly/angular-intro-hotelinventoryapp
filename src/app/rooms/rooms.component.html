@@ -36,7 +36,7 @@
             <!-- <td>{{e ? "Even" : "Odd"}}</td> -->
             <td>{{ room.roomNumber }}</td>
             <td>{{ room.roomType }}</td>
-            <!-- PIPES transform strings, numbers, dates, etc for display  -->
+            <!-- PIPES transform strings, numbers, dates, etc for display. They DONT change actual data  -->
             <td>{{ room.price | currency : 'EUR'}}</td>
             <td>{{ room.amenities | titlecase }}</td>
             <td>{{ room.checkinTime | date : "short" }}</td>
