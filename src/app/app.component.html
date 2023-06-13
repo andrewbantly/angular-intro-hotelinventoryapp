@@ -1,6 +1,8 @@
 <h1>Hello Angular</h1>
 <hinv-rooms></hinv-rooms>
 
+<h1 #name></h1>
+
 <!-- <div [ngSwitch]="role">
     <div *ngSwitchCase="'User'">
         Welcome user
@@ -11,4 +13,12 @@
     <div *ngSwitchDefault>
         You are not authorized to view this page.
     </div>
+</div> -->
+
+
+<!-- dynamically load a component using View Child-->
+<!-- ng template itself won't render. But it can help render components -->
+<!-- The '#' is known as template reference using View Child -->
+<!-- <div>
+<ng-template #user></ng-template>
 </div> -->
