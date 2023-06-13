@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, DoCheck, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
+import { AfterViewInit, Component, DoCheck, OnInit, ViewChild, ViewChildren, QueryList, OnDestroy } from '@angular/core';
 import { Room, RoomList } from "./rooms"
 import { HeaderComponent } from '../header/header.component';
 
@@ -97,5 +97,6 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
 
     this.roomList = [...this.roomList, room];
   }
+
 
 }
