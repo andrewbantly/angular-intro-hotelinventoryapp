@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { RoomsComponent } from './rooms/rooms.component';
+import { LocalStorageToken } from './localstorage.token';
 
 @Component({
   selector: 'hinv-root',
@@ -17,10 +18,11 @@ export class AppComponent implements OnInit {
   @ViewChild('name', {static: true}) name!: ElementRef;
 
   ngOnInit(): void {
-    this.name.nativeElement.innerText = "Hilton Hotels";
+    this.name.nativeElement.innerText = "Hilton Hotel";
+    this.localStorage.setItem('name', 'Hilton Hotel');
   }
 
-  // constructor(private loggerService: LoggerService) {}
+  constructor(@Inject(LocalStorageToken) private localStorage: Storage) {}
 
   // ngAfterViewInit(): void {
   //   const componentRef = this.vcr.createComponent(RoomsComponent);
