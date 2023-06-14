@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, DoCheck, OnInit, ViewChild, ViewChildren, QueryList, OnDestroy } from '@angular/core';
 import { Room, RoomList } from "./rooms"
 import { HeaderComponent } from '../header/header.component';
+import { RoomsService } from './services/rooms.service';
 
 @Component({
   selector: 'hinv-rooms',
@@ -30,6 +31,10 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
 
   @ViewChildren(HeaderComponent) headerChildrenComponent!: QueryList<HeaderComponent>;
 
+  // roomService = new RoomsService(); 
+
+  constructor(private roomsService: RoomsService) {}
+
   toggle() {
     this.hideRooms = !this.hideRooms;
     this.title = "Rooms Available";
@@ -37,36 +42,8 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
 
   ngOnInit(): void {
     // console.log(this.headerComponent);
-    this.roomList = [
-      {
-        roomNumber: 1,
-        roomType: 'Basic Room',
-        amenities: 'Air Conditioning, Wi-fi, TV, Bath Tub, Kitchenette',
-        price: 400,
-        photos: "https://www.acaciahotelsmanila.com/wp-content/uploads/2023/05/Rooms-and-Suites-AHM-1.jpg",
-        checkinTime: new Date('11-June-2023'),
-        checkoutTime: new Date('21-June-2023'),
-        rating: 4.5,
-      }, {
-        roomNumber: 2,
-        roomType: 'Deluxe Room',
-        amenities: 'Air Conditioning, Wi-fi, TV, Bath Tub, Kitchenette',
-        price: 1000,
-        photos: "https://www.acaciahotelsmanila.com/wp-content/uploads/2023/05/Rooms-and-Suites-AHM-1.jpg",
-        checkinTime: new Date('11-June-2023'),
-        checkoutTime: new Date('21-June-2023'),
-        rating: 4.28,
-      },{
-        roomNumber: 3,
-        roomType: 'Deluxe Suite',
-        amenities: 'Air Conditioning, Wi-fi, TV, Bath Tub, Kitchenette',
-        price: 1200,
-        photos: "https://www.acaciahotelsmanila.com/wp-content/uploads/2023/05/Rooms-and-Suites-AHM-1.jpg",
-        checkinTime: new Date('11-June-2023'),
-        checkoutTime: new Date('21-June-2023'),
-        rating: 3.13,
-      }
-    ];
+    this.roomList = this.roomsService.getRooms()
+    
   }
 
   ngDoCheck(): void {
