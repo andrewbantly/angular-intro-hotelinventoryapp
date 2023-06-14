@@ -20,6 +20,8 @@ export class AppComponent implements OnInit {
     this.name.nativeElement.innerText = "Hilton Hotels";
   }
 
+  // constructor(private loggerService: LoggerService) {}
+
   // ngAfterViewInit(): void {
   //   const componentRef = this.vcr.createComponent(RoomsComponent);
   //   componentRef.instance.numberOfRooms = 50;

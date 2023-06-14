@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, DoCheck, OnInit, ViewChild, ViewChildren, QueryList, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, DoCheck, OnInit, ViewChild, ViewChildren, QueryList, SkipSelf } from '@angular/core';
 import { Room, RoomList } from "./rooms"
 import { HeaderComponent } from '../header/header.component';
 import { RoomsService } from './services/rooms.service';
@@ -33,7 +33,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
 
   // roomService = new RoomsService(); 
 
-  constructor(private roomsService: RoomsService) {}
+  constructor(@SkipSelf() private roomsService: RoomsService) {}
 
   toggle() {
     this.hideRooms = !this.hideRooms;
