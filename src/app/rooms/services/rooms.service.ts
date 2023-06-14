@@ -48,6 +48,6 @@ export class RoomsService {
   }
 
   getRooms() {
-    return this.http.get('/api/rooms')
+    return this.http.get<RoomList[]>('/api/rooms');
   }
 }
