@@ -117,4 +117,10 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
     })
   }
 
+  deleteRoom() {
+    this.roomsService.delete('3').subscribe((data) => {
+      this.roomList = data; 
+    })
+  }
+
 }
