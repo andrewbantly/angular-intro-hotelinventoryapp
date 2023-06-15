@@ -47,7 +47,18 @@ export class RoomsService {
     console.log("room service initialized...");
   }
 
+  // GET
   getRooms() {
     return this.http.get<RoomList[]>('/api/rooms');
+  }
+
+  // POST
+  addRoom(room: RoomList) {
+    return this.http.post<RoomList[]>('/api/rooms', room);
+  }
+
+  // UPDATE
+  editRoom(room: RoomList) {
+    return this.http.put<RoomList[]>('/api/rooms', room);
   }
 }

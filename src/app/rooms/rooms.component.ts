@@ -28,7 +28,8 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
 
   roomList: RoomList[] = [];
 
-  stream = new Observable(observer => {
+  
+  stream = new Observable<string>(observer => {
     observer.next('user1');
     observer.next('user2');
     observer.next('user3');
@@ -81,7 +82,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
 
   addRoom() {
     const room: RoomList = {
-      roomNumber: '4',
+      // roomNumber: '4',
       roomType: "Modern Room",
       amenities: "Massage chair",
       price: 1500,
@@ -92,7 +93,24 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
     }
 
     this.roomList = [...this.roomList, room];
+
+    // POST CALL
+    this.roomsService.addRoom(room).subscribe((data) => {
+      this.roomList = data;
+    })
   }
 
+  editRoom() {
+    const room: RoomList = {
+      roomNumber: '3',
+      roomType: "Modern Room",
+      amenities: "Massage chair",
+      price: 1500,
+      photos: "https://www.acaciahotelsmanila.com/wp-content/uploads/2023/05/Rooms-and-Suites-AHM-1.jpg",
+      checkinTime: new Date('12-Jun-2023'),
+      checkoutTime: new Date('21-Jun-2023'),
+      rating: 4.9
+    }
+  }
 
 }
