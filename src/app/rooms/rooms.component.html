@@ -5,7 +5,7 @@
 <hinv-header></hinv-header> -->
 
 <!-- async pipe -->
-{{rooms$ | async | json}}
+<!-- {{rooms$ | async | json}} -->
 
 <div [hidden]="hideRooms">
     Number of rooms:
@@ -31,6 +31,12 @@
 <h3> 
     {{ getError$ | async }}
 </h3>
+
+<h3>
+    Number of Rooms:
+    {{roomsCount$ | async}}
+</h3>
+
 
 <!-- use ngIf as much as possible, not hidden. The element doens't exist on the DOM depending on the argument, where as hidden always exists on the DOM even when hidden -->
 <!-- <div *ngIf="rooms.availableRooms > 0"> -->
