@@ -2,7 +2,7 @@ import { AfterViewInit, Component, DoCheck, OnInit, ViewChild, ViewChildren, Que
 import { Room, RoomList } from "./rooms"
 import { HeaderComponent } from '../header/header.component';
 import { RoomsService } from './services/rooms.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { HttpEventType } from '@angular/common/http';
 
 @Component({
@@ -29,7 +29,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
 
   roomList: RoomList[] = [];
 
-  
+
   stream = new Observable<string>(observer => {
     observer.next('user1');
     observer.next('user2');
@@ -44,20 +44,27 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
 
   // roomService = new RoomsService(); 
 
-  constructor(@SkipSelf() private roomsService: RoomsService) {}
+  constructor(@SkipSelf() private roomsService: RoomsService) { }
 
   toggle() {
     this.hideRooms = !this.hideRooms;
     this.title = "Rooms Available";
   }
 
-    totalBytes: number = 0;
+  totalBytes: number = 0;
+
+  rooms$ = this.roomsService.getRooms$;
+
+  subscription !: Subscription;
 
   ngOnInit(): void {
     // console.log(this.headerComponent);
     // this.roomList = this.roomsService.getRooms()
     // console.log(this.roomsService.getRooms())
     this.stream.subscribe((data) => console.log(data));
+    
+  // traditional unsubscribe workflow
+    // this.subscription = this.stream.subscribe((data) => console.log(data));
     this.stream.subscribe({
       next: (value) => console.log(value),
       complete: () => console.log('complete'),
@@ -144,8 +151,13 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
 
   deleteRoom() {
     this.roomsService.delete('3').subscribe((data) => {
-      this.roomList = data; 
+      this.roomList = data;
     })
   }
 
+  ngOnDestroy() {
+    if(this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
 }

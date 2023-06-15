@@ -1,8 +1,11 @@
 
 <!-- <h2>Welcome to {{hotelName}}</h2> -->
 <hinv-header></hinv-header>
-<hinv-header></hinv-header>
-<hinv-header></hinv-header>
+<!-- <hinv-header></hinv-header>
+<hinv-header></hinv-header> -->
+
+<!-- async pipe -->
+{{rooms$ | async | json}}
 
 <div [hidden]="hideRooms">
     Number of rooms:
@@ -29,8 +32,10 @@
 
 <!-- use ngIf as much as possible, not hidden. The element doens't exist on the DOM depending on the argument, where as hidden always exists on the DOM even when hidden -->
 <!-- <div *ngIf="rooms.availableRooms > 0"> -->
-<div *ngIf="hideRooms">
-    <hinv-rooms-list [rooms] = "roomList"
+<!-- <div *ngIf="hideRooms"> -->
+<div *ngIf="rooms$ | async as rooms">
+    <!-- <hinv-rooms-list [rooms] = "roomList" -->
+    <hinv-rooms-list [rooms] = "rooms"
     [title]="title"
     (selectedRoom)="selectRoom($event)"
     ></hinv-rooms-list>
