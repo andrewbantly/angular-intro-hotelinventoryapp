@@ -63,9 +63,12 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
       complete: () => console.log('complete'),
       error: (err) => console.log(err)
     })
-    this.roomsService.getRooms().subscribe(rooms => {
+
+    // ShareReplay RxJs Operator from rooms.service.ts
+    this.roomsService.getRooms$.subscribe(rooms => {
       this.roomList = rooms;
     })
+
     this.roomsService.getPhotos().subscribe((event) => {
       switch (event.type) {
         case HttpEventType.Sent: {

@@ -4,6 +4,7 @@ import { APP_SERVICE_CONFIG } from 'src/app/AppConfig/appconfig.service';
 import { AppConfig } from 'src/app/AppConfig/appconfig.interface';
 // import { environment } from 'src/environments/environment'; 
 import { HttpClient, HttpRequest } from '@angular/common/http';
+import { shareReplay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -38,8 +39,12 @@ export class RoomsService {
     //   checkoutTime: new Date('21-June-2023'),
     //   rating: 3.13,
     // }
+  
   ];
-
+  // ShareReplay RxJs Operator to cache the API data and avoid making multiple calls
+  getRooms$ = this.http.get<RoomList[]>('/api/rooms').pipe(
+    shareReplay(1)
+  );
 
   constructor(@Inject(APP_SERVICE_CONFIG) private config: AppConfig, private http: HttpClient) {  
     // console.log(environment.apiEndpoint);
