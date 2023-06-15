@@ -3,6 +3,7 @@ import { Room, RoomList } from "./rooms"
 import { HeaderComponent } from '../header/header.component';
 import { RoomsService } from './services/rooms.service';
 import { Observable } from 'rxjs';
+import { HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'hinv-rooms',
@@ -14,7 +15,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
   hotelName = "Marriott Hotel";
   numberOfRooms = 10;
 
-  hideRooms = false;
+  hideRooms = true;
 
   selectedRoom!: RoomList;
 
@@ -50,6 +51,8 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
     this.title = "Rooms Available";
   }
 
+    totalBytes: number = 0;
+
   ngOnInit(): void {
     // console.log(this.headerComponent);
     // this.roomList = this.roomsService.getRooms()
@@ -63,7 +66,26 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
     this.roomsService.getRooms().subscribe(rooms => {
       this.roomList = rooms;
     })
-    
+    this.roomsService.getPhotos().subscribe((event) => {
+      switch (event.type) {
+        case HttpEventType.Sent: {
+          console.log('request has been made');
+          break;
+        }
+        case HttpEventType.ResponseHeader: {
+          console.log('request success!');
+          break;
+        }
+        case HttpEventType.DownloadProgress: {
+          this.totalBytes += event.loaded;
+          break;
+        }
+        case HttpEventType.Response: {
+          console.log(event.body)
+        }
+      }
+
+    })
   }
 
   ngDoCheck(): void {
