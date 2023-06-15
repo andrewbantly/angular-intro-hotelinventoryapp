@@ -3,7 +3,7 @@ import { RoomList } from '../rooms';
 import { APP_SERVICE_CONFIG } from 'src/app/AppConfig/appconfig.service';
 import { AppConfig } from 'src/app/AppConfig/appconfig.interface';
 // import { environment } from 'src/environments/environment'; 
-import { HttpClient, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpRequest, HttpHeaders } from '@angular/common/http';
 import { shareReplay } from 'rxjs';
 
 @Injectable({
@@ -41,8 +41,11 @@ export class RoomsService {
     // }
   
   ];
+  headers = new HttpHeaders({'token': '192ks93k399sk381j48'});
   // ShareReplay RxJs Operator to cache the API data and avoid making multiple calls
-  getRooms$ = this.http.get<RoomList[]>('/api/rooms').pipe(
+  getRooms$ = this.http.get<RoomList[]>('/api/rooms', {
+    headers: this.headers,
+  }).pipe(
     shareReplay(1)
   );
 
