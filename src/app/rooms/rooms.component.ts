@@ -102,7 +102,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
 
   editRoom() {
     const room: RoomList = {
-      roomNumber: '3',
+      roomNumber: '3 ',
       roomType: "Modern Room",
       amenities: "Massage chair",
       price: 1500,
@@ -110,7 +110,11 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
       checkinTime: new Date('12-Jun-2023'),
       checkoutTime: new Date('21-Jun-2023'),
       rating: 4.9
-    }
+    };
+
+    this.roomsService.editRoom(room).subscribe((data) => {
+      this.roomList = data;
+    })
   }
 
 }

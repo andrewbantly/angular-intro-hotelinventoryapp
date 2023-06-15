@@ -59,6 +59,6 @@ export class RoomsService {
 
   // UPDATE
   editRoom(room: RoomList) {
-    return this.http.put<RoomList[]>('/api/rooms', room);
+    return this.http.put<RoomList[]>(`/api/rooms/${room.roomNumber}`, room);
   }
 }
