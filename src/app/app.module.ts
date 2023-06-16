@@ -32,8 +32,9 @@ import { RequestInterceptor } from './request.interceptor';
     useValue: APP_CONFIG
   },
 {
-  provide: RequestInterceptor,
-  useValue: HTTP_INTERCEPTORS,
+  provide: HTTP_INTERCEPTORS,
+  useClass: RequestInterceptor,
+  multi: true,
 }],
   bootstrap: [AppComponent]
 })
