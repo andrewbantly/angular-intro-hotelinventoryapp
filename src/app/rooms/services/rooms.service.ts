@@ -41,10 +41,10 @@ export class RoomsService {
     // }
   
   ];
-  headers = new HttpHeaders({'token': '192ks93k399sk381j48'});
+  // headers = new HttpHeaders({'token': '192ks93k399sk381j48'});
   // ShareReplay RxJs Operator to cache the API data and avoid making multiple calls
   getRooms$ = this.http.get<RoomList[]>('/api/rooms', {
-    headers: this.headers,
+    // headers: this.headers,
   }).pipe(
     shareReplay(1)
   );
