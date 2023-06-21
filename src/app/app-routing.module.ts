@@ -12,6 +12,11 @@ const routes: Routes = [
   {
     path: 'rooms',
     component: RoomsComponent
+  },
+  {
+    path: '',
+    redirectTo: '/rooms',
+    pathMatch: 'full'
   }
 ];
 
