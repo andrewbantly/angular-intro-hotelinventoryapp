@@ -21,6 +21,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { RoomsBookingComponent } from './rooms/rooms-booking/rooms-booking.component';
 
 
 function initFactory(initService: InitService) {
@@ -37,7 +38,8 @@ function initFactory(initService: InitService) {
     ContainerComponent,
     EmployeeComponent,
     AppNavComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    RoomsBookingComponent
   ],
   imports: [
     BrowserModule,

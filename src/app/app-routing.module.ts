@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EmployeeComponent } from './employee/employee.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { RoomsBookingComponent } from './rooms/rooms-booking/rooms-booking.component';
 
 const routes: Routes = [
   // to configure a route, you need two things: a path and component
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'rooms',
     component: RoomsComponent
+  },
+  {
+    path: 'rooms/:roomId',
+    component: RoomsBookingComponent
   },
   {
     path: '',
