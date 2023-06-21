@@ -11,7 +11,7 @@ export class RoomsBookingComponent implements OnInit {
 
   // id: number = 0;
 
-  id$ = this.router.params.pipe(map((params) => params['roomId']));
+  id$ = this.router.paramMap.pipe(map((params) => params.get('roomId')));
 
   constructor(private router: ActivatedRoute) { }
 
@@ -21,5 +21,7 @@ export class RoomsBookingComponent implements OnInit {
     //   console.log(params)
     //   this.id = params['roomId']
     // })
+
+    // this.router.paramMap.subscribe((params) => { params.get('roomId')})
   }
 }
