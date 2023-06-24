@@ -30,9 +30,12 @@
             placeholder="Amenities" 
             [(ngModel)]="room.amenities"
         />
-        <div class="alert alert-danger" *ngIf="roomAmenities.errors?.['minlength']">
+        <div class="alert alert-danger" role="alert" *ngIf="roomAmenities.errors?.['minlength']">
             <!-- {{roomAmenities.errors | json}} -->
             Amentities should be at least five characters. 
+        </div>
+        <div *ngIf="roomAmenities.dirty && roomAmenities.errors?.['required']">
+            Please provide the amenities
         </div>
     </div>
     <div class="form-group">
