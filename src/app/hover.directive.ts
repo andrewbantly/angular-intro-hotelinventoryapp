@@ -5,7 +5,7 @@ import { Directive, ElementRef, HostListener, Input, OnInit, Renderer2 } from '@
 })
 export class HoverDirective implements OnInit {
 
-  @Input() color: string = 'red';
+  @Input() hinvHover: string = 'red';
 
   constructor(private element: ElementRef, private renderer: Renderer2) {
     console.log(this.element.nativeElement)
@@ -14,7 +14,7 @@ export class HoverDirective implements OnInit {
   ngOnInit(): void {
     console.log('Hover Directive')
     // this.element.nativeElement.style.backgroundColor = this.color;
-    this.renderer.setStyle(this.element.nativeElement, 'backgroundColor', this.color)
+    this.renderer.setStyle(this.element.nativeElement, 'backgroundColor', this.hinvHover)
   };
 
   @HostListener('mouseenter') onMouseEnter() {
