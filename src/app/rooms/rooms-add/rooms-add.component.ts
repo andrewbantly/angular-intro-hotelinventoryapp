@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RoomList } from '../rooms';
 import { RoomsService } from '../services/rooms.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'hinv-rooms-add',
@@ -27,11 +28,25 @@ export class RoomsAddComponent implements OnInit {
 
   }
 
-  AddRoom() {
+  AddRoom(roomsForm: NgForm) {
     this.roomsService.addRoom(this.room).subscribe((data) => {
-     console.log(data)
-     this.successMessage = "Room added successfully."
+     console.log(data);
+     console.log("roomsForm", roomsForm);
+     this.successMessage = "Room added successfully.";
+     const lastRoom = data[(data.length) - 1]
+     roomsForm.reset();
+     roomsForm.resetForm({
+      roomType: lastRoom.roomType,
+      amenities: lastRoom.amenities,
+      checkinTime: new Date (),
+      checkoutTime: new Date (),
+      photos: "",
+      price: lastRoom.price,
+      rating: 0
+     });
     })
+  }  
+  resetForm(roomsForm: NgForm) {
+   roomsForm.reset()
   }
-
 }
