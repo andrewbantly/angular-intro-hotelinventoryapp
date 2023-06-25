@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild, ViewCo
 import { RoomsComponent } from './rooms/rooms.component';
 import { LocalStorageToken } from './localstorage.token';
 import { InitService } from './init.service';
+import { ConfigService } from './services/config.service';
 
 @Component({
   selector: 'hinv-root',
@@ -23,7 +24,10 @@ export class AppComponent implements OnInit {
     this.localStorage.setItem('name', 'Hilton Hotel');
   }
 
-  constructor(@Inject(LocalStorageToken) private localStorage: any, private initService: InitService) {
+  constructor(
+      @Inject(LocalStorageToken) private localStorage: any, 
+      private initService: InitService,
+      private ConfigService: ConfigService) {
     console.log(initService.config)
   }
 
