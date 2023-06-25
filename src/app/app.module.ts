@@ -29,6 +29,8 @@ import { HoverDirective } from './hover.directive';
 import { EmailvalidatorDirective } from './emailvalidator/emailvalidator.directive';
 // import { RoomsModule } from './rooms/rooms.module';
 import { HeaderModule } from './header/header.module';
+import { RouteConfigToken } from './services/routeConfig.service';
+import { ROUTES } from '@angular/router';
 
 
 function initFactory(initService: InitService) {
@@ -69,6 +71,9 @@ function initFactory(initService: InitService) {
   providers: [ {
     provide: APP_SERVICE_CONFIG,
     useValue: APP_CONFIG
+  }, {
+    provide: RouteConfigToken,
+    useValue: { title: 'Home' },
   },
 {
   provide: HTTP_INTERCEPTORS,
