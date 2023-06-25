@@ -14,6 +14,7 @@ const routes: Routes = [
   // { path: 'rooms-add', component: RoomsAddComponent},
   // { path: 'rooms/:roomId', component: RoomsBookingComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'rooms', loadChildren: () => import('./rooms/rooms.module').then(m=>m.RoomsModule) },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: NotfoundComponent }
 ];
