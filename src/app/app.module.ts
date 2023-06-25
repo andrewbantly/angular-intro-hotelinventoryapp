@@ -27,6 +27,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { HoverDirective } from './hover.directive';
 import { EmailvalidatorDirective } from './emailvalidator/emailvalidator.directive';
+import { RoomsModule } from './rooms/rooms.module';
 
 
 function initFactory(initService: InitService) {
@@ -60,7 +61,8 @@ function initFactory(initService: InitService) {
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    FormsModule
+    FormsModule,
+    RoomsModule
   ],
   providers: [ {
     provide: APP_SERVICE_CONFIG,
