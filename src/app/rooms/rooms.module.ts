@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { RoomsComponent } from './rooms.component';
+import { RoomsListComponent } from './rooms-list/rooms-list.component';
 import { RoomsRoutingModule } from './rooms-routing.module';
+import { RoomsAddComponent } from './rooms-add/rooms-add.component';
+import { RoomsBookingComponent } from './rooms-booking/rooms-booking.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [RoomsComponent, RoomsListComponent, RoomsBookingComponent, RoomsAddComponent],
   imports: [
     CommonModule,
     RoomsRoutingModule
