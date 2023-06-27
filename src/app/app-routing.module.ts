@@ -11,8 +11,8 @@ import { loginGuard } from './guards/login.guard';
 const routes: Routes = [
   // to configure a route, you need two things: a path and component
   { path: 'employee', component: EmployeeComponent, 
-  // canMatch: [loginGuard]}
-  ,
+  // canMatch: [loginGuard]
+},
   // { path: 'rooms', component: RoomsComponent },
   // { path: 'rooms-add', component: RoomsAddComponent},
   // { path: 'rooms/:roomId', component: RoomsBookingComponent },
