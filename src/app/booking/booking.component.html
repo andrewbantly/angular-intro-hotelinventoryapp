@@ -17,4 +17,36 @@
                 Email is <strong>required</strong> -->
             <!-- </mat-error> -->
         </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Guest Email:</mat-label>
+            <input 
+                type="email" 
+                formControlName="guestEmail" 
+                placeholder="Provide email" 
+            />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Guest Name:</mat-label>
+            <input 
+                type="text" 
+                formControlName="guestName" 
+                placeholder="Guest Name" 
+            />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Mobile Number</mat-label>
+            <input 
+                type="text" 
+                formControlName="mobileNumber" 
+                placeholder="Phone Number" 
+            />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Booking Amount:</mat-label>
+            <input 
+                type="number" 
+                formControlName="bookingAmount" 
+                placeholder="Enter cost" 
+            />
+        </mat-form-field>
 </form>
