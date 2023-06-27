@@ -6,9 +6,10 @@ import { RoomsBookingComponent } from './rooms-booking/rooms-booking.component';
 import { roomGuard } from '../guards/room.guard';
 
 const routes: Routes = [
-  { path: 'rooms-add', component: RoomsAddComponent, canActivateChild: [roomGuard]},
-  { path: '', component: RoomsComponent, children: [
-    { path: ':roomId', component: RoomsBookingComponent }]
+    { path: '', component: RoomsComponent, canActivateChild: [roomGuard], children: [
+    { path: ':roomId', component: RoomsBookingComponent },
+    { path: 'rooms-add', component: RoomsAddComponent}
+  ]
   },
   // { path: 'rooms/:roomId', component: RoomsBookingComponent },
 ];
