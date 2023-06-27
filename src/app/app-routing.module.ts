@@ -10,14 +10,20 @@ import { loginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   // to configure a route, you need two things: a path and component
-  { path: 'employee', component: EmployeeComponent, canMatch: [loginGuard]},
+  { path: 'employee', component: EmployeeComponent, 
+  // canMatch: [loginGuard]}
+  ,
   // { path: 'rooms', component: RoomsComponent },
   // { path: 'rooms-add', component: RoomsAddComponent},
   // { path: 'rooms/:roomId', component: RoomsBookingComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'rooms', loadChildren: () => import('./rooms/rooms.module').then(m=>m.RoomsModule),  canMatch: [loginGuard] },
+  { path: 'rooms', loadChildren: () => import('./rooms/rooms.module').then(m=>m.RoomsModule),  
+  // canMatch: [loginGuard] 
+},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'booking', loadChildren: () => import('./booking/booking.module').then(m => m.BookingModule),  canMatch: [loginGuard] },
+  { path: 'booking', loadChildren: () => import('./booking/booking.module').then(m => m.BookingModule), 
+  //  canMatch: [loginGuard] 
+  },
   { path: '**', component: NotfoundComponent }
 ];
 

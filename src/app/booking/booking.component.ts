@@ -24,4 +24,6 @@ export class Booking {
   guestState: string;
   guestCountry: string;
   guestZipCode: string;
+  guestCount: number;
+  guestList: Guest[];
 }
