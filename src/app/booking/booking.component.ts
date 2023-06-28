@@ -30,11 +30,16 @@ export class BookingComponent implements OnInit {
       bookingDate: new FormControl(''),
       mobileNumber: new FormControl(''),
       guestName: new FormControl(''),
-      guestAddress: new FormControl(''),
-      guestCity: new FormControl(''),
-      guestState: new FormControl(''),
-      guestCountry: new FormControl(''),
-      guestZipCode: new FormControl(''),
+
+      address : this.fb.group( { 
+        addressLine: new FormControl(''),
+        addressLine2: new FormControl(''),
+        city: new FormControl(''),
+        state: new FormControl(''),
+        country: new FormControl(''),
+        zipCode: new FormControl(''),
+      }),
+
       guestCount: new FormControl(''),
       guestList: new FormControl(''),
     })
