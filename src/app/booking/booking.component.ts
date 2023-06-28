@@ -11,7 +11,12 @@ export class BookingComponent implements OnInit {
 
   bookingForm!: FormGroup;
 
+
   constructor(private configService: ConfigService, private fb: FormBuilder) { }
+
+  addBooking() {
+    console.log(this.bookingForm.value)
+  }
 
   ngOnInit(): void {
     this.bookingForm = this.fb.group({
@@ -33,10 +38,6 @@ export class BookingComponent implements OnInit {
       guestList: new FormControl(''),
     })
   };
-
-  addBooking() {
-    console.log(this.bookingForm.value)
-  }
 }
 
 // export class Booking {
