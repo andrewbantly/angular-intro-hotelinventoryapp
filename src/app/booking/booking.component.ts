@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, FormArray } from '@angular/forms';
 import { ConfigService } from '../services/config.service';
 
 @Component({
@@ -10,7 +10,9 @@ import { ConfigService } from '../services/config.service';
 export class BookingComponent implements OnInit {
 
   bookingForm!: FormGroup;
-
+  get guests() {
+    return this.bookingForm.get('guests') as FormArray;
+  }
 
   constructor(private configService: ConfigService, private fb: FormBuilder) { }
 
@@ -32,18 +34,24 @@ export class BookingComponent implements OnInit {
       guestName: new FormControl(''),
 
       address : this.fb.group( { 
-        addressLine: new FormControl(''),
+        addressLine1: new FormControl(''),
         addressLine2: new FormControl(''),
         city: new FormControl(''),
         state: new FormControl(''),
         country: new FormControl(''),
         zipCode: new FormControl(''),
       }),
-
+      guests: this.fb.array([]),
       guestCount: new FormControl(''),
       guestList: new FormControl(''),
     })
   };
+
+  addGuest() {
+    this.guests.push(
+      this.fb.group({ guestName: [''], age: new FormControl('')})
+    )
+  }
 }
 
 // export class Booking {
