@@ -32,6 +32,10 @@ export class BookingComponent implements OnInit {
       guestCount: new FormControl(''),
       guestList: new FormControl(''),
     })
+  };
+
+  addBooking() {
+    console.log(this.bookingForm.value)
   }
 }
 

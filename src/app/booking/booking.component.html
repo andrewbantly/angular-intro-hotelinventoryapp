@@ -2,7 +2,7 @@
 {{bookingForm.pristine | json }}
 {{bookingForm.dirty | json }}
 
-<form [formGroup]="bookingForm" class="example-form">
+<form [formGroup]="bookingForm" class="example-form" (ngSubmit)="addBooking">
 
     <mat-form-field class="example-full-width">
         <mat-label>Room ID:</mat-label>
@@ -42,4 +42,8 @@
         <mat-datepicker-toggle matSuffix [for]="booking"></mat-datepicker-toggle>
         <mat-datepicker #booking></mat-datepicker>
     </mat-form-field>
+    <div>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+    </div>
+
 </form>
