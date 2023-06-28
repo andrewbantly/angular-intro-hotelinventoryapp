@@ -15,12 +15,13 @@ export class BookingComponent implements OnInit {
   constructor(private configService: ConfigService, private fb: FormBuilder) { }
 
   addBooking() {
-    console.log(this.bookingForm.value)
+    // console.log(this.bookingForm.value)
+    console.log(this.bookingForm.getRawValue())
   }
 
   ngOnInit(): void {
     this.bookingForm = this.fb.group({
-      roomId: new FormControl(''),
+      roomId: new FormControl({ value: '2', disabled: true }),
       guestEmail: new FormControl(''),
       checkinDate: new FormControl(''),
       checkoutDate: new FormControl(''),
