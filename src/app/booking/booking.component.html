@@ -108,6 +108,14 @@
                             <input type="number" matInput formControlName="age" placeholder="Guest Age">
                         </mat-form-field>
                     </div>
+                    <div>
+                        <button
+                            mat-raised-button
+                            color="primary"
+                            type="button"
+                            (click)="removeGuest(i)"
+                        >Remove Guest</button>
+                    </div>
                 </div>
             </mat-expansion-panel>
         </mat-accordion>
