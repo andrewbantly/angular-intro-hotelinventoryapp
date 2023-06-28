@@ -51,6 +51,10 @@ export class BookingComponent implements OnInit {
       this.fb.group({ guestName: [''], age: new FormControl('')})
     )
   }
+
+  addPassport() {
+    this.bookingForm.addControl('passport', new FormControl(''))
+  }
 }
 
 // export class Booking {
