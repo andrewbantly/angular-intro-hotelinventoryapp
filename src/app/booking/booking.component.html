@@ -80,6 +80,7 @@
                 </mat-expansion-panel-header>
                 <div *ngFor="let guest of guests.controls; let i=index">
                     <div [formGroupName]="i">
+                        <h5>Guest {{i + 2}}</h5>
                         <mat-form-field>
                             <input type="text" matInput formControlName="guestName" placeholder="Guest Name">
                         </mat-form-field>
