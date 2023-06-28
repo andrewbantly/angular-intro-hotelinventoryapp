@@ -73,16 +73,23 @@
         <button mat-raised-button color="primary" type="button" (click)="addGuest()">Add Guest</button>
     </div>
     <div formArrayName="guests">
-        <div *ngFor="let guest of guests.controls; let i=index">
-            <div [formGroupName]="i">
-                <mat-form-field>
-                    <input type="text" matInput formControlName="guestName" placeholder="Guest Name">
-                </mat-form-field>
-                <mat-form-field>
-                    <input type="number" matInput formControlName="age" placeholder="Guest Age">
-                </mat-form-field>
-            </div>
-        </div>
+        <mat-accordion class="example-headers-align" multi>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Additional Guest</mat-panel-title>
+                </mat-expansion-panel-header>
+                <div *ngFor="let guest of guests.controls; let i=index">
+                    <div [formGroupName]="i">
+                        <mat-form-field>
+                            <input type="text" matInput formControlName="guestName" placeholder="Guest Name">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input type="number" matInput formControlName="age" placeholder="Guest Age">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
     </div>
     <div>
         <button mat-raised-button color="primary">Book Room</button>
