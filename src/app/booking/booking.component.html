@@ -121,6 +121,9 @@
         </mat-accordion>
     </div>
     <div>
-        <button mat-raised-button color="primary">Book Room</button>
+        <mat-checkbox class="example-margin" formControlName="tnc">Terms & Conditions</mat-checkbox>
+    </div>
+    <div>
+        <button mat-raised-button [disabled]="bookingForm.invalid" color="primary">Book Room</button>
     </div>
 </form>

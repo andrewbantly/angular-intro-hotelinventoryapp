@@ -43,6 +43,7 @@ export class BookingComponent implements OnInit {
       guests: this.fb.array([]),
       guestCount: new FormControl(''),
       guestList: new FormControl(''),
+      tnc: new FormControl(false, { validators: [Validators.requiredTrue] }),
     })
   };
 
