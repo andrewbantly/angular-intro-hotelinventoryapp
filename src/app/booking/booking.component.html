@@ -3,14 +3,13 @@
 {{bookingForm.dirty | json }}
 
 
-
 <button
-    mat-raised-button
-    color="primary"
-    type="button"
-    (click)="addPassport()"
+mat-raised-button
+color="primary"
+type="button"
+(click)="addPassport()"
 >
-    Add Passport
+Add Passport
 </button>
 
 
@@ -18,19 +17,21 @@
     <mat-form-field class="example-full-width" *ngIf="bookingForm.get('passport')">
         <mat-label>Passport</mat-label>
         <input
-            matInput
-            type="number"
-            formControlName="passport"
-            placeholder="Enter Passport Number"
+        matInput
+        type="number"
+        formControlName="passport"
+        placeholder="Enter Passport Number"
         >
     </mat-form-field>
     <mat-form-field class="example-full-width">
         <mat-label>Room ID:</mat-label>
         <input matInput type="text" formControlName="roomId" placeholder="Room ID" />
     </mat-form-field>
+    {{bookingForm.get('guestName')?.errors | json}}
     <mat-form-field class="example-full-width">
         <mat-label>Guest Name:</mat-label>
         <input matInput type="text" formControlName="guestName" placeholder="Guest Name" />
+        <mat-error *ngIf="bookingForm.get('guestName')?.hasError('minlength')">Name should be at leaset five characters</mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width">
         <mat-label>Guest Email:</mat-label>
