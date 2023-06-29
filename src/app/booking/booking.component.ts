@@ -18,7 +18,9 @@ export class BookingComponent implements OnInit {
 
   addBooking() {
     // console.log(this.bookingForm.value)
-    console.log(this.bookingForm.getRawValue())
+    console.log(this.bookingForm.getRawValue());
+    this.bookingForm.reset()
+
   }
 
   ngOnInit(): void {
