@@ -49,6 +49,11 @@ export class BookingComponent implements OnInit {
       tnc: new FormControl(false, { validators: [Validators.requiredTrue] }),
     });
     this.getBookingData();
+
+    this.bookingForm.valueChanges.subscribe(data => {
+      console.log(data)
+    })
+
   };
 
   getBookingData() {
