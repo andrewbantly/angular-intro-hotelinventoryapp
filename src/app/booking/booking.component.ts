@@ -47,8 +47,18 @@ export class BookingComponent implements OnInit {
       guestCount: new FormControl(''),
       guestList: new FormControl(''),
       tnc: new FormControl(false, { validators: [Validators.requiredTrue] }),
-    })
+    });
+    this.getBookingData();
   };
+
+  getBookingData() {
+    this.bookingForm.patchValue({      
+    roomId: '5',
+    guestEmail: 'murphy@dog.toy',
+    checkinDate: new Date('2023-07-04'),
+    guestName: 'Murphy',
+  });
+}
 
   addGuest() {
     this.guests.push(
