@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, FormArray, Validators } from '@angular/forms';
 import { ConfigService } from '../services/config.service';
+import { visitAll } from '@angular/compiler';
 
 @Component({
   selector: 'hinv-booking',
@@ -35,12 +36,12 @@ export class BookingComponent implements OnInit {
       mobileNumber: new FormControl(''),
       guestName: new FormControl('', [Validators.required, Validators.minLength(5)]),
       address : this.fb.group( { 
-        addressLine1: new FormControl(''),
+        addressLine1: new FormControl('', { validators: [Validators.required] }),
         addressLine2: new FormControl(''),
-        city: new FormControl(''),
-        state: new FormControl(''),
-        country: new FormControl(''),
-        zipCode: new FormControl(''),
+        city: new FormControl('', { validators: [Validators.required] }),
+        state: new FormControl('', { validators: [Validators.required] }),
+        country: new FormControl('', { validators: [Validators.required] }),
+        zipCode: new FormControl('', { validators: [Validators.required] }),
       }),
       guests: this.fb.array([]),
       guestCount: new FormControl(''),
@@ -51,7 +52,7 @@ export class BookingComponent implements OnInit {
 
   addGuest() {
     this.guests.push(
-      this.fb.group({ guestName: [''], age: new FormControl('')})
+      this.fb.group({ guestName: ['', { validators: [Validators.required] }], age: new FormControl('', { validators: [Validators.required] })})
     )
   }
 
