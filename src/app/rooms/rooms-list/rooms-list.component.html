@@ -15,7 +15,11 @@
         <th>Select Room</th>
     </tr>
     <!-- *ngFor is like forEach loop -->
-    <tr [ngClass]="e ? 'even' : 'odd'" *ngFor="let room of rooms let e=even; let o=odd; let i = index">
+    <tr 
+        [ngClass]="e ? 'even' : 'odd'" 
+        *ngFor="let room of rooms | filter : 1000; 
+        let e=even; let o=odd; let i = index"
+    >
         <!-- <td>{{i}}</td> -->
         <!-- <td>{{e ? "Even" : "Odd"}}</td> -->
         <td>{{ room.roomNumber }}</td>
