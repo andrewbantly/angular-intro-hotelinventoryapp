@@ -43,7 +43,7 @@ export class BookingComponent implements OnInit {
       mobileNumber: new FormControl('', { 
         updateOn: 'blur' 
       }),
-      guestName: new FormControl('', [Validators.required, Validators.minLength(5), CustomerValidator.ValidateName]),
+      guestName: new FormControl('', [Validators.required, Validators.minLength(5), CustomerValidator.ValidateName, CustomerValidator.ValidateSpecialChar('?') ]),
       address : this.fb.group( { 
         addressLine1: new FormControl('', { validators: [Validators.required] }),
         addressLine2: new FormControl(''),
