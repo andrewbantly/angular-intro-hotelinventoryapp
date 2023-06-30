@@ -30,6 +30,9 @@ export class CustomValidator {
         console.log(diffTime)
         console.log(diffDays)
         if (diffDays <= 0) {
+            control.get('checkoutDate')?.setErrors({
+                invalidDate: true
+            })
             return {
                 invalidDate: true
             }
