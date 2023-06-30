@@ -1,4 +1,4 @@
-import { AbstractControl } from "@angular/forms";
+import { AbstractControl, FormGroup } from "@angular/forms";
 
 export class CustomValidator {
 
@@ -21,6 +21,18 @@ export class CustomValidator {
             }
             return null
         }
+    }
+    static validateDate(control: FormGroup) {
+        const checkinDate: any= new Date(control.get('checkinDate')?.value);
+        const checkoutDate: any = new Date(control.get('checkoutDate')?.value);
+        const diffTime = Math.abs(checkinDate - checkoutDate);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+        if (diffDays <= 0) {
+            return {
+                invalidDate: true
+            }
+        }
+        return null
     }
 
 }
