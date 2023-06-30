@@ -1,6 +1,6 @@
 
 <!-- <h2>Welcome to {{hotelName}}</h2> -->
-<hinv-header></hinv-header>
+<!-- <hinv-header></hinv-header> -->
 <!-- <hinv-header></hinv-header>
 <hinv-header></hinv-header> -->
 
@@ -12,30 +12,29 @@
     <div 
     [ngStyle]="{'color': rooms.availableRooms ? 'green' : 'red'}"
     [innerText]="numberOfRooms"></div>
-
 </div>
 
 
 <!-- optional chaining  -->
-{{ rooms?.availableRooms ?? 'No Rooms'}}
+<!-- {{ rooms?.availableRooms ?? 'No Rooms'}} -->
 
 
-<div *ngIf="selectedRoom">
+<!-- <div *ngIf="selectedRoom">
     {{selectedRoom | json}}
-</div>
+</div> -->
 
 <div>
-    <button (click)="addRoom()">Add Room</button>
+    <button class="btn btn-success" (click)="addRoom()">Add Room</button>
 </div>
 
 <h3> 
     {{ getError$ | async }}
 </h3>
-
+<!-- 
 <h3>
     Number of Rooms:
     {{roomsCount$ | async}}
-</h3>
+</h3> -->
 
 
 <!-- use ngIf as much as possible, not hidden. The element doens't exist on the DOM depending on the argument, where as hidden always exists on the DOM even when hidden -->
@@ -49,12 +48,12 @@
     ></hinv-rooms-list>
 </div>
 
-<button (click)="toggle()">Toggle</button>
-<button (click)="editRoom()">Edit Room</button>
-<button (click)="deleteRoom()">Delete Room</button>
-
+<!-- <button class="btn btn-primary" (click)="toggle()">Toggle</button> -->
+<button class="btn btn-primary" (click)="editRoom()">Edit Room</button>
+<button class="btn btn-danger" (click)="deleteRoom()">Delete Room</button>
+<!-- 
 <h3>
     {{totalBytes}} loaded
-</h3>
+</h3> -->
 
 <router-outlet></router-outlet>
