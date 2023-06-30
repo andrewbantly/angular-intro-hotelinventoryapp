@@ -1,7 +1,7 @@
-import { CustomerValidator } from './customer-validator';
+import { CustomValidator } from './custom-validator';
 
-describe('CustomerValidator', () => {
+describe('CustomValidator', () => {
   it('should create an instance', () => {
-    expect(new CustomerValidator()).toBeTruthy();
+    expect(new CustomValidator()).toBeTruthy();
   });
 });
