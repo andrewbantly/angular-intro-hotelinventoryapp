@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, FormArray, Validators } from '@angular/forms';
 import { ConfigService } from '../services/config.service';
 import { visitAll } from '@angular/compiler';
+import { BookingService } from './booking.service';
+import { mergeMap } from 'rxjs';
 
 @Component({
   selector: 'hinv-booking',
@@ -15,12 +17,13 @@ export class BookingComponent implements OnInit {
     return this.bookingForm.get('guests') as FormArray;
   }
 
-  constructor(private configService: ConfigService, private fb: FormBuilder) { }
+  constructor(private configService: ConfigService, private fb: FormBuilder, private bookingService: BookingService) { }
 
   addBooking() {
     // console.log(this.bookingForm.value)
-    console.log(this.bookingForm.getRawValue());
-    this.bookingForm.reset()
+    // console.log(this.bookingForm.getRawValue());
+    // this.bookingService.bookRoom(this.bookingForm.getRawValue()).subscribe((data) => { console.log(data)})
+    // this.bookingForm.reset()
 
   }
 
@@ -56,9 +59,13 @@ export class BookingComponent implements OnInit {
     });
     this.getBookingData();
 
-    this.bookingForm.valueChanges.subscribe(data => {
-      console.log(data)
-    })
+    // this.bookingForm.valueChanges.subscribe(data => {
+    //   this.bookingService.bookRoom(data).subscribe((data) => {})
+    // })
+
+    this.bookingForm.valueChanges.pipe(
+      mergeMap((data) => this.bookingService.bookRoom(data))
+    ).subscribe((data) => console.log(data))
 
   };
 
