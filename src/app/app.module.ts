@@ -31,6 +31,8 @@ import { EmailvalidatorDirective } from './emailvalidator/emailvalidator.directi
 import { HeaderModule } from './header/header.module';
 import { RouteConfigToken } from './services/routeConfig.service';
 import { ROUTES } from '@angular/router';
+import { MatSnackBarModule } from '@angular/material/snack-bar'
+
 
 
 function initFactory(initService: InitService) {
@@ -66,7 +68,9 @@ function initFactory(initService: InitService) {
     MatIconModule,
     MatListModule,
     FormsModule,
-    HeaderModule
+    HeaderModule,
+    MatSnackBarModule,
+
   ],
   providers: [ {
     provide: APP_SERVICE_CONFIG,
