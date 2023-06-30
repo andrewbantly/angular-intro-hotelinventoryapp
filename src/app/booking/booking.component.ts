@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, FormArray, Validators } from '@angular/forms';
 import { ConfigService } from '../services/config.service';
-import { visitAll } from '@angular/compiler';
 import { BookingService } from './booking.service';
 import { mergeMap } from 'rxjs';
+import { CustomerValidator } from './validators/customer-validator';
 
 @Component({
   selector: 'hinv-booking',
@@ -43,7 +43,7 @@ export class BookingComponent implements OnInit {
       mobileNumber: new FormControl('', { 
         updateOn: 'blur' 
       }),
-      guestName: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      guestName: new FormControl('', [Validators.required, Validators.minLength(5), CustomerValidator.ValidateName]),
       address : this.fb.group( { 
         addressLine1: new FormControl('', { validators: [Validators.required] }),
         addressLine2: new FormControl(''),
