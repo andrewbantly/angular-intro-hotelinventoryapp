@@ -56,7 +56,7 @@ export class BookingComponent implements OnInit {
       guestCount: new FormControl(''),
       guestList: new FormControl(''),
       tnc: new FormControl(false, { validators: [Validators.requiredTrue] }),
-    });
+    }, {updateOn: 'blur', validators: [CustomValidator.validateDate] });
     this.getBookingData();
 
     // this.bookingForm.valueChanges.subscribe(data => {

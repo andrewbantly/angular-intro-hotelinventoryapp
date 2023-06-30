@@ -25,8 +25,10 @@ export class CustomValidator {
     static validateDate(control: FormGroup) {
         const checkinDate: any= new Date(control.get('checkinDate')?.value);
         const checkoutDate: any = new Date(control.get('checkoutDate')?.value);
-        const diffTime = Math.abs(checkinDate - checkoutDate);
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+        const diffTime = checkoutDate - checkinDate;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        console.log(diffTime)
+        console.log(diffDays)
         if (diffDays <= 0) {
             return {
                 invalidDate: true
