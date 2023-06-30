@@ -13,7 +13,10 @@
     [ngStyle]="{'color': rooms.availableRooms ? 'green' : 'red'}"
     [innerText]="numberOfRooms"></div>
 </div>
-
+<div>
+    <input type="number" class="form-control" placeholder="Price" [formControl]="priceFilter" />
+</div>
+{{ priceFilter | json }}
 
 <!-- optional chaining  -->
 <!-- {{ rooms?.availableRooms ?? 'No Rooms'}} -->

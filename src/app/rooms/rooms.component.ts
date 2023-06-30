@@ -5,6 +5,7 @@ import { RoomsService } from './services/rooms.service';
 import { Observable, Subject, Subscription, catchError, map, of } from 'rxjs';
 import { HttpEventType } from '@angular/common/http';
 import { ConfigService } from '../services/config.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'hinv-rooms',
@@ -29,6 +30,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
   title = 'Room List'
 
   roomList: RoomList[] = [];
+
 
 
   stream = new Observable<string>(observer => {
@@ -69,6 +71,8 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
   roomsCount$  = this.roomsService.getRooms$.pipe(
     map((rooms) => rooms.length) 
   )
+
+  priceFilter = new FormControl(0)
 
   subscription !: Subscription;
 
