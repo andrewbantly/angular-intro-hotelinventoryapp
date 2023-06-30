@@ -13,6 +13,8 @@ export class RoomsListComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() title: string = '';
 
+  @Input() price: number = 0;
+
   @Output() selectedRoom = new EventEmitter<RoomList>();
 
   constructor() {}

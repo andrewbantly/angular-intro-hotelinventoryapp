@@ -17,7 +17,7 @@
     <!-- *ngFor is like forEach loop -->
     <tr 
         [ngClass]="e ? 'even' : 'odd'" 
-        *ngFor="let room of rooms | filter : 1000; 
+        *ngFor="let room of rooms | filter : price; 
         let e=even; let o=odd; let i = index"
     >
         <!-- <td>{{i}}</td> -->
