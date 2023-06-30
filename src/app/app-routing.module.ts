@@ -18,10 +18,10 @@ const routes: Routes = [
   // { path: 'rooms/:roomId', component: RoomsBookingComponent },
   { path: 'login', component: LoginComponent },
   { path: 'rooms', loadChildren: () => import('./rooms/rooms.module').then(m=>m.RoomsModule),  
-  // canMatch: [loginGuard] 
+  canMatch: [loginGuard] 
 },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'booking', loadChildren: () => import('./booking/booking.module').then(m => m.BookingModule), 
+  { path: 'booking/:roomId', loadChildren: () => import('./booking/booking.module').then(m => m.BookingModule), 
   //  canMatch: [loginGuard] 
   },
   { path: '**', component: NotfoundComponent }

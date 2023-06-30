@@ -4,6 +4,7 @@ import { ConfigService } from '../services/config.service';
 import { BookingService } from './booking.service';
 import { mergeMap } from 'rxjs';
 import { CustomValidator } from './validators/custom-validator';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'hinv-booking',
@@ -17,7 +18,7 @@ export class BookingComponent implements OnInit {
     return this.bookingForm.get('guests') as FormArray;
   }
 
-  constructor(private configService: ConfigService, private fb: FormBuilder, private bookingService: BookingService) { }
+  constructor(private configService: ConfigService, private fb: FormBuilder, private bookingService: BookingService, private route: ActivatedRoute) { }
 
   addBooking() {
     // console.log(this.bookingForm.value)
@@ -28,8 +29,10 @@ export class BookingComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // getting roomId with url params
+    const roomId = this.route.snapshot.paramMap.get('roomId')
     this.bookingForm = this.fb.group({
-      roomId: new FormControl({ value: '2', disabled: true }, { validators: [Validators.required] }),
+      roomId: new FormControl({ value: roomId, disabled: true }, { validators: [Validators.required] }),
       guestEmail: new FormControl('', { 
         updateOn: 'blur', 
         validators: [Validators.required, Validators.email]
@@ -57,7 +60,7 @@ export class BookingComponent implements OnInit {
       guestList: new FormControl(''),
       tnc: new FormControl(false, { validators: [Validators.requiredTrue] }),
     }, {updateOn: 'blur', validators: [CustomValidator.validateDate] });
-    this.getBookingData();
+    // this.getBookingData();
 
     // this.bookingForm.valueChanges.subscribe(data => {
     //   this.bookingService.bookRoom(data).subscribe((data) => {})
